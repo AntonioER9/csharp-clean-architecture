@@ -1,16 +1,6 @@
-﻿Beer budweiser = new Beer { Name = "Budweiser", Price = 5.99m };
+﻿using ObjectOrientedProgramming.Business;
 
-var coronaBeer = new Beer { Name = "Corona", Price = 6.99m };
+Beer budweiser = new Beer("Budweiser", 5.99m, -2);
 
 Console.WriteLine($"Name: {budweiser.Name}, Price: {budweiser.Price}");
-
-public class Beer
-{
-  public string Name { get; set; }
-  public decimal Price { get; set; }
-  public string GetInfo()
-  {
-    return $"Name: {Name}, Price: {Price}";
-  }
-}
 

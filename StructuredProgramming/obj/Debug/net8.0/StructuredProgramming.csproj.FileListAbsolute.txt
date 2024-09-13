@@ -1,0 +1,14 @@
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/bin/Debug/net8.0/StructuredProgramming
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/bin/Debug/net8.0/StructuredProgramming.deps.json
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/bin/Debug/net8.0/StructuredProgramming.runtimeconfig.json
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/bin/Debug/net8.0/StructuredProgramming.dll
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/bin/Debug/net8.0/StructuredProgramming.pdb
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.AssemblyInfoInputs.cache
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.AssemblyInfo.cs
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.csproj.CoreCompileInputs.cache
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.dll
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/refint/StructuredProgramming.dll
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.pdb
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/StructuredProgramming.genruntimeconfig.cache
+/Users/Antonio/Docs/2Areas/IT/Backend/C#/StructuredProgramming/StructuredProgramming/obj/Debug/net8.0/ref/StructuredProgramming.dll

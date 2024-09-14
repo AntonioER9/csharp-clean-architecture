@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StructuredProgramming")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56a848078cce4a885fa4b7577309791887853e9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55a381e4ddea3de64f458446521332d7094c1639")]
 [assembly: System.Reflection.AssemblyProductAttribute("StructuredProgramming")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StructuredProgramming")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

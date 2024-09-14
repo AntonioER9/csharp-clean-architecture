@@ -29,9 +29,18 @@ namespace ObjectOrientedProgramming.Business
             Alcohol = alcohol;
         }
 
-        public string GetInfo()
+        public virtual string GetInfo()
         {
             return $"Name: {Name}, Price: {Price}";
+        }
+
+        public string GetInfo(string message)
+        {
+            return $"{message} Name: {Name}, Price: {Price}";
+        }
+        public string GetInfo(int message)
+        {
+            return $"{message} Name: {Name}, Price: {Price}";
         }
     }
 }

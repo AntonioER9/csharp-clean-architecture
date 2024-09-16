@@ -19,6 +19,29 @@ Func<int, int, string> mulString = (a, b) =>
 };
 show(mulString(2, 3)); // 6
 
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+Predicate<int> isEven = n => n % 2 == 0;
+
+var numbersFiltered = Filter(numbers, n => n % 2 == 0);
+
+foreach (var number in numbersFiltered)
+{
+  Console.WriteLine(number);
+}
+
+List<int> Filter(List<int> list, Func<int, bool> condition)
+{
+  var result = new List<int>();
+  foreach (var item in list)
+  {
+    if (condition(item))
+    {
+      result.Add(item);
+    }
+  }
+  return result;
+}
 // Función no pura
 DateTime Tomorrow()
 {

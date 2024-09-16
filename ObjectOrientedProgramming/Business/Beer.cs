@@ -1,7 +1,8 @@
 namespace ObjectOrientedProgramming.Business
 {
-    public class Beer
+    public class Beer : Drink
     {
+        private const string Category = "Beer"; // constant
         private decimal _alcohol; // field
         public string Name { get; set; } // property
         public decimal Price { get; set; }
@@ -22,7 +23,8 @@ namespace ObjectOrientedProgramming.Business
             }
         }
 
-        public Beer(string name, decimal price, decimal alcohol)
+        public Beer(string name, decimal price, decimal alcohol, int quantity)
+            : base(quantity)
         {
             Name = name;
             Price = price;
@@ -41,6 +43,11 @@ namespace ObjectOrientedProgramming.Business
         public string GetInfo(int message)
         {
             return $"{message} Name: {Name}, Price: {Price}";
+        }
+
+        public override string GetCategory()
+        {
+            return Category;
         }
     }
 }

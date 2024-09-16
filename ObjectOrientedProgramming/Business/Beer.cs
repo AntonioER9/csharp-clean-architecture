@@ -1,6 +1,6 @@
 namespace ObjectOrientedProgramming.Business
 {
-    public class Beer : Drink
+    public class Beer : Drink, ISalable, ISend
     {
         private const string Category = "Beer"; // constant
         private decimal _alcohol; // field
@@ -48,6 +48,12 @@ namespace ObjectOrientedProgramming.Business
         public override string GetCategory()
         {
             return Category;
+        }
+
+        public decimal GetPrice() => Price;
+        public void Send()
+        {
+            Console.WriteLine("Sending beer");
         }
     }
 }

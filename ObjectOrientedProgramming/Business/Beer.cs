@@ -7,6 +7,8 @@ namespace ObjectOrientedProgramming.Business
         public string Name { get; set; } // property
         public decimal Price { get; set; }
 
+        public static int QuantityObjects;
+
         public decimal Alcohol
         {
             get
@@ -29,6 +31,7 @@ namespace ObjectOrientedProgramming.Business
             Name = name;
             Price = price;
             Alcohol = alcohol;
+            QuantityObjects++;
         }
 
         public virtual string GetInfo()

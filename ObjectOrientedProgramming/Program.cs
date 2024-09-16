@@ -32,3 +32,6 @@ foreach (var name in names.Get())
 {
   Console.WriteLine(name);
 }
+
+Console.WriteLine($"Objetos creados: {Beer.QuantityObjects}");
+Console.WriteLine(Operations.Add(1, 2));

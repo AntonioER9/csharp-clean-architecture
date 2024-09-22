@@ -1,7 +1,15 @@
-﻿public class Beer
+﻿var beerData = new BeerData();
+beerData.Add("Heineken");
+beerData.Add("Corona");
+var reportGeneratorBeer = new ReportGeneratorBeer(beerData);
+var report = new Report();
+var data = reportGeneratorBeer.Generate();
+report.Save(data, "beer.txt");
+
+public class BeerData
 {
   private List<string> _beers;
-  public Beer()
+  public BeerData()
   {
     _beers = new List<string>();
   }
@@ -13,22 +21,35 @@
   {
     return _beers;
   }
-  public List<string> GetReport()
+}
+
+public class ReportGeneratorBeer
+{
+  private BeerData _beerData;
+  public ReportGeneratorBeer(BeerData beerData)
+  {
+    _beerData = beerData;
+  }
+  public List<string> Generate()
   {
     var data = new List<string>();
-    foreach (var beer in _beers)
+    foreach (var beer in _beerData.Get())
     {
-      data.Add("Cerveza: " + beer);
+      data.Add(beer);
     }
     return data;
   }
-  public void SaveReport(string filePath)
+}
+
+public class Report
+{
+  public void Save(List<string> data, string filePath)
   {
     using (var writer = new StreamWriter(filePath))
     {
-      foreach (var beer in GetReport())
+      foreach (var item in data)
       {
-        writer.WriteLine(beer);
+        writer.WriteLine(item);
       }
     }
   }

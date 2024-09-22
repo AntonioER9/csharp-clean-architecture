@@ -1,6 +1,8 @@
-﻿var beerData = new BeerData();
+﻿// var beerData = new BeerData();
+BeerData beerData = new BeerData();
 beerData.Add("Heineken");
 beerData.Add("Corona");
+beerData.Add("Modelo");
 var reportGeneratorBeer = new ReportGeneratorBeer(beerData);
 var reportGeneratorHTMLBeer = new ReportGeneratorHTMLBeer(beerData);
 var report = new Report();
@@ -15,18 +17,60 @@ public interface IReportGenerator
 
 public class BeerData
 {
-  private List<string> _beers;
+  protected List<string> _beers;
   public BeerData()
   {
     _beers = new List<string>();
   }
-  public void Add(string beer)
+  public virtual void Add(string beer)
   {
     _beers.Add(beer);
   }
   public List<string> Get()
   {
     return _beers;
+  }
+}
+
+// public class LimitedBeerData : BeerData // Violación de Liskov
+// {
+//   private int _limit;
+//   public LimitedBeerData(int limit)
+//   {
+//     _limit = limit;
+//   }
+//   public override void Add(string beer)
+//   {
+//     if (_beers.Count >= _limit)
+//     {
+//       throw new Exception("No se pueden agregar más cervezas");
+//     }
+//     base.Add(beer);
+//   }
+// }
+
+public class LimitedBeerData
+{
+  private BeerData _beerData = new BeerData();
+  private int _limit;
+  private int _count = 0;
+  public LimitedBeerData(int limit)
+  {
+    _limit = limit;
+  }
+  public void Add(string beer)
+  {
+    if (_count >= _limit)
+    {
+      throw new Exception("No se pueden agregar más cervezas");
+    }
+    _beerData.Add(beer);
+    _count++;
+  }
+
+  public List<string> Get()
+  {
+    return _beerData.Get();
   }
 }
 

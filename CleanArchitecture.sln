@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientedProgramming",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuncionalProgramming", "FuncionalProgramming\FuncionalProgramming.csproj", "{701C9A88-0BAA-4873-811F-8F3557D3768B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOLID", "SOLID\SOLID.csproj", "{C4320311-A559-49AC-884D-68BF785516CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{701C9A88-0BAA-4873-811F-8F3557D3768B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{701C9A88-0BAA-4873-811F-8F3557D3768B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{701C9A88-0BAA-4873-811F-8F3557D3768B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4320311-A559-49AC-884D-68BF785516CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4320311-A559-49AC-884D-68BF785516CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4320311-A559-49AC-884D-68BF785516CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4320311-A559-49AC-884D-68BF785516CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

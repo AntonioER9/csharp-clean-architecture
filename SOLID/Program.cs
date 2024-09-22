@@ -2,9 +2,16 @@
 beerData.Add("Heineken");
 beerData.Add("Corona");
 var reportGeneratorBeer = new ReportGeneratorBeer(beerData);
+var reportGeneratorHTMLBeer = new ReportGeneratorHTMLBeer(beerData);
 var report = new Report();
 var data = reportGeneratorBeer.Generate();
-report.Save(data, "beer.txt");
+// report.Save(reportGeneratorBeer, "beer.txt");
+report.Save(reportGeneratorHTMLBeer, "beer.html");
+
+public interface IReportGenerator
+{
+  string Generate();
+}
 
 public class BeerData
 {
@@ -23,34 +30,51 @@ public class BeerData
   }
 }
 
-public class ReportGeneratorBeer
+public class ReportGeneratorBeer : IReportGenerator
 {
   private BeerData _beerData;
   public ReportGeneratorBeer(BeerData beerData)
   {
     _beerData = beerData;
   }
-  public List<string> Generate()
+  public string Generate()
   {
-    var data = new List<string>();
+    string data = "";
     foreach (var beer in _beerData.Get())
     {
-      data.Add(beer);
+      data += "Cerveza: " + beer + Environment.NewLine;
     }
+    return data;
+  }
+}
+
+public class ReportGeneratorHTMLBeer : IReportGenerator
+{
+  private BeerData _beerData;
+  public ReportGeneratorHTMLBeer(BeerData beerData)
+  {
+    _beerData = beerData;
+  }
+  public string Generate()
+  {
+    string data = "<html><body>";
+    foreach (var beer in _beerData.Get())
+    {
+      data += "<p>Cerveza: " + beer + "</p>";
+    }
+    data += "</body></html>";
     return data;
   }
 }
 
 public class Report
 {
-  public void Save(List<string> data, string filePath)
+  public void Save(IReportGenerator reportGenerator, string filePath)
   {
     using (var writer = new StreamWriter(filePath))
     {
-      foreach (var item in data)
-      {
-        writer.WriteLine(item);
-      }
+      string data = reportGenerator.Generate();
+      writer.WriteLine(data);
     }
   }
 }

@@ -1,5 +1,5 @@
 ﻿// var beerData = new BeerData();
-BeerData beerData = new BeerData();
+IRepository<string> beerData = new BeerData();
 beerData.Add("Heineken");
 beerData.Add("Corona");
 beerData.Add("Modelo");
@@ -25,7 +25,13 @@ public interface IReportShow
   public void Show();
 }
 
-public class BeerData
+public interface IRepository<T>
+{
+  public void Add(T item);
+  public List<T> Get();
+}
+
+public class BeerData : IRepository<string>
 {
   protected List<string> _beers;
   public BeerData()
@@ -61,12 +67,13 @@ public class BeerData
 
 public class LimitedBeerData
 {
-  private BeerData _beerData = new BeerData();
+  private IRepository<string> _beerData;
   private int _limit;
   private int _count = 0;
-  public LimitedBeerData(int limit)
+  public LimitedBeerData(int limit, IRepository<string> beerData)
   {
     _limit = limit;
+    _beerData = beerData;
   }
   public void Add(string beer)
   {
@@ -86,8 +93,8 @@ public class LimitedBeerData
 
 public class ReportGeneratorBeer : IReportGenerator, IReportShow
 {
-  private BeerData _beerData;
-  public ReportGeneratorBeer(BeerData beerData)
+  private IRepository<string> _beerData;
+  public ReportGeneratorBeer(IRepository<string> beerData)
   {
     _beerData = beerData;
   }
@@ -111,8 +118,8 @@ public class ReportGeneratorBeer : IReportGenerator, IReportShow
 
 public class ReportGeneratorHTMLBeer : IReportGenerator
 {
-  private BeerData _beerData;
-  public ReportGeneratorHTMLBeer(BeerData beerData)
+  private IRepository<string> _beerData;
+  public ReportGeneratorHTMLBeer(IRepository<string> beerData)
   {
     _beerData = beerData;
   }

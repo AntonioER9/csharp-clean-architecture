@@ -1,5 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\CA-ApplicationLayer\CA-ApplicationLayer.csproj" />
+    <ProjectReference Include="..\CA-InterfaceAdapters-Data\CA-InterfaceAdapters-Data.csproj" />
+    <ProjectReference Include="..\CA-EnterpriseLayer\CA-EnterpriseLayer.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>CA_InterfaceAdapters_Repository</RootNamespace>

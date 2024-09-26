@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-InterfaceAdapters-Data",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-InterfaceAdapters-Repository", "Clean Architecture\CA-InterfaceAdapters-Repository\CA-InterfaceAdapters-Repository.csproj", "{FC3D957B-C7EA-4751-AA87-B4A6A8B57A49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-FrameworksDrivers-API", "Clean Architecture\CA-FrameworksDrivers-API\CA-FrameworksDrivers-API.csproj", "{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{FC3D957B-C7EA-4751-AA87-B4A6A8B57A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC3D957B-C7EA-4751-AA87-B4A6A8B57A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC3D957B-C7EA-4751-AA87-B4A6A8B57A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{D686595E-348F-4596-9833-98650767C5D3} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 		{BA9771E3-2B85-4972-B525-DC1F09F0B54F} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 		{FC3D957B-C7EA-4751-AA87-B4A6A8B57A49} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
+		{9B3DFF2B-6854-4019-B3A3-3EB6ED74DDD0} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 	EndGlobalSection
 EndGlobal

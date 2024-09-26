@@ -1,13 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\OperationComponent\OperationComponent.csproj" />
     <ProjectReference Include="..\BusinessComponent\BusinessComponent.csproj" />
-    <ProjectReference Include="..\RepositoryComponent\RepositoryComponent.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

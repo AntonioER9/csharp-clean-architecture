@@ -1,6 +1,7 @@
-﻿using OperationComponent;
+﻿using BusinessComponent;
+using RepositoryComponent;
 
-var operations = new Operations();
-var result = operations.Some(1, 2);
-Console.WriteLine(result); // 3
-
+var beerManager = new BeerManager(new BeerRepository());
+beerManager.AddBeer("Heineken");
+beerManager.AddBeer("Budweiser");
+Console.WriteLine(beerManager.GetBeer());

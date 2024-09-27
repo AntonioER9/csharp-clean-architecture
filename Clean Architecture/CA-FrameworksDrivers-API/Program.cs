@@ -1,6 +1,8 @@
 using CA_ApplicationLayer;
 using CA_EnterpriseLayer;
 using CA_InterfaceAdapters_Data;
+using CA_InterfaceAdapters_Mappers;
+using CA_InterfaceAdapters_Mappers.Dtos.Requests;
 using CA_InterfaceAdapters_Models;
 using CA_InterfaceAdapters_Presenters;
 using CA_InterfaceAdapters_Repository;
@@ -20,7 +22,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 builder.Services.AddScoped<IRepository<Beer>, Repository>();
 builder.Services.AddScoped<IPresenter<Beer, BeerViewModel>, BeerPresenter>();
+builder.Services.AddScoped<IMapper<BeerRequestDTO, Beer>, BeerMapper>();
+
 builder.Services.AddScoped<GetBeerUseCase<Beer, BeerViewModel>>();
+builder.Services.AddScoped<AddBeerUseCase<BeerRequestDTO>>();
+
 
 var app = builder.Build();
 
@@ -39,5 +45,14 @@ app.MapGet("/beer", async (GetBeerUseCase<Beer, BeerViewModel> beerUseCase) =>
 })
 .WithName("beers")
 .WithOpenApi();
+
+app.MapPost("/beer", async (BeerRequestDTO beerRequest, AddBeerUseCase<BeerRequestDTO> beerUseCase) =>
+{
+    await beerUseCase.ExecuteAsync(beerRequest);
+    return Results.Created("/beer", beerRequest);
+})
+.WithName("addBeer")
+.WithOpenApi();
+
 
 app.Run();

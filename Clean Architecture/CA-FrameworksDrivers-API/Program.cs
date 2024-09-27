@@ -1,6 +1,8 @@
 using CA_ApplicationLayer;
+using CA_EnterpriseLayer;
 using CA_InterfaceAdapters_Data;
 using CA_InterfaceAdapters_Models;
+using CA_InterfaceAdapters_Presenters;
 using CA_InterfaceAdapters_Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,8 +18,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddScoped<IRepository<BeerModel>, Repository>();
-builder.Services.AddScoped<GetBeerUseCase<BeerModel>>();
+builder.Services.AddScoped<IRepository<Beer>, Repository>();
+builder.Services.AddScoped<IPresenter<Beer, BeerViewModel>, BeerPresenter>();
+builder.Services.AddScoped<GetBeerUseCase<Beer, BeerViewModel>>();
 
 var app = builder.Build();
 
@@ -30,7 +33,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/beer", async (GetBeerUseCase<BeerModel> beerUseCase) =>
+app.MapGet("/beer", async (GetBeerUseCase<Beer, BeerViewModel> beerUseCase) =>
 {
     return await beerUseCase.ExecuteAsync();
 })

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CA_InterfaceAdapters_Repository;
 
-public class Repository : IRepository<BeerModel>
+public class Repository : IRepository<Beer>
 {
   private readonly AppDbContext _dbContext;
   public Repository(AppDbContext dbContext)
@@ -24,12 +24,27 @@ public class Repository : IRepository<BeerModel>
     await _dbContext.Beers.AddAsync(beerModel); // Add a new beer to the database
     await _dbContext.SaveChangesAsync(); // Save changes to the database
   }
-  public async Task<BeerModel> GetByIdAsync(int id)
+  public async Task<Beer> GetByIdAsync(int id)
   {
-    return await _dbContext.Beers.FindAsync(id); // Find a beer by its id
+    var beerModel = await _dbContext.Beers.FindAsync(id); // Find a beer by its id
+    return new Beer
+    {
+      Id = beerModel.Id,
+      Name = beerModel.Name,
+      Style = beerModel.Style,
+      Alcohol = beerModel.Alcohol
+    };
   }
-  public async Task<IEnumerable<BeerModel>> GetAllAsync()
+  public async Task<IEnumerable<Beer>> GetAllAsync()
   {
-    return await _dbContext.Beers.ToListAsync(); // Get all beers from the database
+    return await _dbContext.Beers
+    .Select(beer => new Beer
+    {
+      Id = beer.Id,
+      Name = beer.Name,
+      Style = beer.Style,
+      Alcohol = beer.Alcohol
+    })
+    .ToListAsync(); // Get all beers from the database
   }
 }

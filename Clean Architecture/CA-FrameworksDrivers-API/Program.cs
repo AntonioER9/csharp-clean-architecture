@@ -1,5 +1,6 @@
 using CA_ApplicationLayer;
 using CA_EnterpriseLayer;
+using CA_FrameworksDrivers_API.Middlewares;
 using CA_InterfaceAdapters_Data;
 using CA_InterfaceAdapters_Mappers;
 using CA_InterfaceAdapters_Mappers.Dtos.Requests;
@@ -38,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapGet("/beer", async (GetBeerUseCase<Beer, BeerViewModel> beerUseCase) =>
 {

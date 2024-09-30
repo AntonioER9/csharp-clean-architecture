@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CA_ApplicationLayer.Exceptions;
 using CA_EnterpriseLayer;
 
 namespace CA_ApplicationLayer
@@ -20,7 +21,7 @@ namespace CA_ApplicationLayer
             var beer = _mapper.ToEntity(dto);
             if (string.IsNullOrEmpty(beer.Name))
             {
-                throw new ArgumentException("Name is required");
+                throw new ValidationException("Name is required");
             }
             await _beerRepository.AddAsync(beer);
         }

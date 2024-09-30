@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-InterfaceAdapters-Mapper
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-InterfaceAdapter-Adapters", "Clean Architecture\CA-InterfaceAdapter-Adapters\CA-InterfaceAdapter-Adapters.csproj", "{EDBD9BC1-3DAB-4B4C-AFA0-5D1F1F7967D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA-FrameworksDrivers-ExternalService", "Clean Architecture\CA-FrameworksDrivers-ExternalService\CA-FrameworksDrivers-ExternalService.csproj", "{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{EDBD9BC1-3DAB-4B4C-AFA0-5D1F1F7967D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDBD9BC1-3DAB-4B4C-AFA0-5D1F1F7967D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDBD9BC1-3DAB-4B4C-AFA0-5D1F1F7967D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,5 +133,6 @@ Global
 		{44BDFFC9-F423-40FA-A249-4CA6A9B44196} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 		{01EE040A-CEDF-4ECD-A1A4-87B234558C89} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 		{EDBD9BC1-3DAB-4B4C-AFA0-5D1F1F7967D6} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
+		{7FC09CD3-AF76-4EC7-A0D7-1808AFC252FA} = {985D05B5-BBA9-4CE6-9C52-D385B52F4EEA}
 	EndGlobalSection
 EndGlobal

@@ -2,6 +2,9 @@ using CA_ApplicationLayer;
 using CA_EnterpriseLayer;
 using CA_FrameworksDrivers_API.Middlewares;
 using CA_FrameworksDrivers_API.Validators;
+using CA_FrameworksDrivers_ExternalService;
+using CA_InterfaceAdapter_Adapters;
+using CA_InterfaceAdapter_Adapters.Dtos;
 using CA_InterfaceAdapters_Data;
 using CA_InterfaceAdapters_Mappers;
 using CA_InterfaceAdapters_Mappers.Dtos.Requests;
@@ -37,10 +40,22 @@ builder.Services.AddScoped<IPresenter<Beer, BeerDetailViewModel>, BeerDetailPres
 
 builder.Services.AddScoped<IMapper<BeerRequestDTO, Beer>, BeerMapper>();
 
+builder.Services.AddScoped<IExternalService<PostServiceDTO>, PostService>();
+builder.Services.AddScoped<IExternalServiceAdapter<Post>, PostExternalServiceAdapter>();
+
+
 builder.Services.AddScoped<GetBeerUseCase<Beer, BeerViewModel>>();
 builder.Services.AddScoped<GetBeerUseCase<Beer, BeerDetailViewModel>>();
 
 builder.Services.AddScoped<AddBeerUseCase<BeerRequestDTO>>();
+
+builder.Services.AddScoped<GetPostUseCase>();
+
+
+builder.Services.AddHttpClient<IExternalService<PostServiceDTO>, PostService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["BaseUrlPosts"]);
+});
 
 
 var app = builder.Build();
@@ -82,6 +97,14 @@ app.MapGet("/beerDetail", async (GetBeerUseCase<Beer, BeerDetailViewModel> beerU
     return await beerUseCase.ExecuteAsync();
 })
 .WithName("beerDetail")
+.WithOpenApi();
+
+
+app.MapGet("/post", async (GetPostUseCase postUseCase) =>
+{
+    return await postUseCase.ExecuteAsync();
+})
+.WithName("posts")
 .WithOpenApi();
 
 app.Run();

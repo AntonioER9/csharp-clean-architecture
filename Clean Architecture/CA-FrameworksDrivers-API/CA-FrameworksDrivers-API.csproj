@@ -22,6 +22,8 @@
     <ProjectReference Include="..\CA-InterfaceAdapters-Models\CA-InterfaceAdapters-Models.csproj" />
     <ProjectReference Include="..\CA-InterfaceAdapters-Presenters\CA-InterfaceAdapters-Presenters.csproj" />
     <ProjectReference Include="..\CA-InterfaceAdapters-Mappers\CA-InterfaceAdapters-Mappers.csproj" />
+    <ProjectReference Include="..\CA-InterfaceAdapter-Adapters\CA-InterfaceAdapter-Adapters.csproj" />
+    <ProjectReference Include="..\CA-FrameworksDrivers-ExternalService\CA-FrameworksDrivers-ExternalService.csproj" />
   </ItemGroup>
 
 </Project>

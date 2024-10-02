@@ -35,10 +35,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddScoped<IRepository<Beer>, Repository>();
+builder.Services.AddScoped<IRepository<Sale>, SaleRepository>();
+
+
 builder.Services.AddScoped<IPresenter<Beer, BeerViewModel>, BeerPresenter>();
 builder.Services.AddScoped<IPresenter<Beer, BeerDetailViewModel>, BeerDetailPresenter>();
 
 builder.Services.AddScoped<IMapper<BeerRequestDTO, Beer>, BeerMapper>();
+builder.Services.AddScoped<IMapper<SaleRequestDTO, Sale>, SaleMapper>();
 
 builder.Services.AddScoped<IExternalService<PostServiceDTO>, PostService>();
 builder.Services.AddScoped<IExternalServiceAdapter<Post>, PostExternalServiceAdapter>();
@@ -46,10 +50,12 @@ builder.Services.AddScoped<IExternalServiceAdapter<Post>, PostExternalServiceAda
 
 builder.Services.AddScoped<GetBeerUseCase<Beer, BeerViewModel>>();
 builder.Services.AddScoped<GetBeerUseCase<Beer, BeerDetailViewModel>>();
-
 builder.Services.AddScoped<AddBeerUseCase<BeerRequestDTO>>();
-
 builder.Services.AddScoped<GetPostUseCase>();
+builder.Services.AddScoped<GenerateSaleUseCase<SaleRequestDTO>>();
+
+
+
 
 
 builder.Services.AddHttpClient<IExternalService<PostServiceDTO>, PostService>(client =>
@@ -106,5 +112,20 @@ app.MapGet("/post", async (GetPostUseCase postUseCase) =>
 })
 .WithName("posts")
 .WithOpenApi();
+
+app.MapPost("/sale", async (SaleRequestDTO saleRequest,
+    GenerateSaleUseCase<SaleRequestDTO> saleUseCase,
+    IValidator<SaleRequestDTO> validator) =>
+{
+    var result = await validator.ValidateAsync(saleRequest);
+    if (!result.IsValid)
+    {
+        return Results.BadRequest(result.Errors);
+    }
+    await saleUseCase.ExecuteAsync(saleRequest);
+    return Results.Created("/sale", saleRequest);
+});
+
+
 
 app.Run();

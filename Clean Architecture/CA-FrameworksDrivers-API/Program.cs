@@ -53,6 +53,7 @@ builder.Services.AddScoped<GetBeerUseCase<Beer, BeerDetailViewModel>>();
 builder.Services.AddScoped<AddBeerUseCase<BeerRequestDTO>>();
 builder.Services.AddScoped<GetPostUseCase>();
 builder.Services.AddScoped<GenerateSaleUseCase<SaleRequestDTO>>();
+builder.Services.AddScoped<GetSaleUseCase>();
 
 
 
@@ -126,6 +127,11 @@ app.MapPost("/sale", async (SaleRequestDTO saleRequest,
     return Results.Created("/sale", saleRequest);
 });
 
-
+app.MapGet("/sale", async (GetSaleUseCase saleUseCase) =>
+{
+    return await saleUseCase.ExecuteAsync();
+})
+.WithName("sales")
+.WithOpenApi();
 
 app.Run();

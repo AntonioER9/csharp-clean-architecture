@@ -6,10 +6,11 @@ using CA_ApplicationLayer;
 using CA_EnterpriseLayer;
 using CA_InterfaceAdapters_Data;
 using CA_InterfaceAdapters_Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CA_InterfaceAdapters_Repository
 {
-    public class SaleRepository : IRepository<Sale>
+    public class SaleRepository : IRepository<Sale>, IRepositorySearch<SaleModel, Sale>
     {
         private readonly AppDbContext _context;
         public async Task AddAsync(Sale sale)
@@ -41,5 +42,20 @@ namespace CA_InterfaceAdapters_Repository
                 _context.Concepts.Where(c => c.IdSale == saleModel.Id)
                 .Select(c => new Concept(c.Quantity, c.IdBeer, c.UnitPrice)).ToList());
         }
+
+        public async Task<IEnumerable<Sale>> GetAsync(Func<SaleModel, bool> predicate)
+        {
+            var salesModel = await _context.Sales.Include("Concepts").Where(predicate).ToListAsync();
+            var sales = new List<Sale>();
+
+            foreach (var saleModel in salesModel)
+            {
+                var concepts = await _context.Concepts.Where(c => c.IdSale == saleModel.Id).ToListAsync();
+                sales.Add(new Sale(saleModel.Id, saleModel.Date,
+                    concepts.Select(c => new Concept(c.Quantity, c.IdBeer, c.UnitPrice)).ToList()));
+            }
+            return sales;
+        }
+
     }
 }

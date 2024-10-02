@@ -10,6 +10,6 @@ namespace CA_ApplicationLayer
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
-        Task AddAsync(Beer beer);
+        Task AddAsync(T beer);
     }
 }
